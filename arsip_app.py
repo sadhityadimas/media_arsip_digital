@@ -31,8 +31,8 @@ with st.sidebar:
     values = st.slider(
         "Data Arsip tahun berapa yang anda cari?",
         2015, 2022, (2018, 2019))
-    if 'year' not in st.session_state: #experimental using st.session_state, if not wowrking just delete
-        st.session_state['key'] = values
+    #if 'year' not in st.session_state: #experimental using st.session_state, if not wowrking just delete
+        #st.session_state['key'] = values
     #st.write(st.session_state['key'])
 
     #values dtypes is tuple
@@ -89,7 +89,7 @@ sheet_url = "https://docs.google.com/spreadsheets/d/15Its4Y6WDQ9WMwE1Df_9ouSY6q3
 url_1 = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=') #to get the csv version
 tabel_index_arsip = pd.read_csv(url_1) #to read the csv as pandas dataframe
 
-tabel_index_arsip2 = tabel_index_arsip[tabel_index_arsip['Year'].isin(st.session_state['key'])] #delete session state to only values
+tabel_index_arsip2 = tabel_index_arsip[tabel_index_arsip['Year'].isin(values)] #delete session state to only values
                                        #== values[0]) & (tabel_index_arsip['Year'] == values[1])]
 #in here you can put pandas table operation such as only display certain years
 #before you feed it as an argumen to our aggregat table below
