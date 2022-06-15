@@ -39,11 +39,11 @@ with st.sidebar:
 
 #sementara sebelum merubah nama tabel agar hemat line code
 if option == "Kendaraan":
-    choice = "tabel_kkp"
+    choice = "Perangkat IT"
 elif option == "Perangkat IT":
-    choice = "aset_ti"
+    choice = "Perangkat IT"
 if option == "Gedung":
-    choice = "tabel_kkp"
+    choice = "Perangkat IT"
 #bagian ini masih harus di perbaiki, tiap pilihan menampilkan sheet berbeda
 
 col1, col2 = st.columns([2,5])
@@ -84,7 +84,8 @@ def tabel_arsip(df: pd.DataFrame):
 
 #menggunakan live google spreadsheet
 #@st.cache(ttl=600)
-sheet_url = "https://docs.google.com/spreadsheets/d/1pW0_JJ3NuXDcuIFlQ88v8qPa-YtD1B9dOu-J-JDAyX4/edit#gid=0"
+
+sheet_url = "https://docs.google.com/spreadsheets/d/15Its4Y6WDQ9WMwE1Df_9ouSY6q3wyka3s1a8Ey4G5ic/edit#gid=0"
 url_1 = sheet_url.replace('/edit#gid=', '/export?format=csv&gid=') #to get the csv version
 tabel_index_arsip = pd.read_csv(url_1) #to read the csv as pandas dataframe
 
@@ -104,8 +105,8 @@ if pilihan_row:
     #st.json(pilihan_row["selected_rows"])
     pilihanmu = pilihan_row["selected_rows"] #for reproducibility, jika ingin memilih value tinggal pilihanmu['nama kolom']
     if pilihanmu:
-        st.write("Arsip yang anda pilih: ", pilihanmu[0]['City'])
-        st.write("Link untuk mendownload pdf arsip ", pilihanmu[0]['City'] , ": " )
+        st.write("Arsip yang anda pilih: ", pilihanmu[0]['Year'])
+        st.write("Link untuk mendownload pdf arsip ", pilihanmu[0]['Year'] , ": " )
         st.write("[View PDF arsip](" + pilihanmu[0]['Link'] + ")")
         #to write hyperlink with shorter clickable use syntax to create a variable link = '[GitHub](http://github.com)'
         #or you can put it inside st.write statement directly as above
